@@ -1,4 +1,4 @@
-from tabnanny import verbose
+
 from django.db import models
 
 class Usuario(models.Model):
@@ -16,14 +16,17 @@ class Vaga(models.Model):
     status = models.CharField(max_length=100)
     
     def __str__(self):
-        return self.descricao
+        return f'{self.descricao} - {self.titulo} - {self.status}'
 
 class Formação(models.Model):
     nome_instituicao = models.CharField(max_length=100)
     formacao = models.CharField(max_length=100)
     trabalho = models.CharField(max_length=100)
+    datinic_for = models.DateField(blank=True, null=True)
+    dattermi_for = models.DateField(blank=True, null=True)
+    descricao_formacao = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.nome_instituicao
+        return f'{self.nome_instituicao}'
 
 
