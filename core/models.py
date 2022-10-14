@@ -40,8 +40,8 @@ class Profissional(models.Model):
     cnpj = models.CharField(max_length=32, null=True, blank=True)
     estado_civil = models.CharField(max_length=100)
     data_nascimento = models.DateField(blank=True, null=True)
-    twitter = models.CharField(max_length=100, null=True)
-    linkedin = models.CharField(max_length=100, null=True)
+    twitter = models.CharField(max_length=100, blank=True, null=True)
+    linkedin = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return f'{self.cnpj} - {self.data_nascimento} - {self.estado_civil}'
@@ -50,6 +50,6 @@ class Inscrição(models.Model):
     descricao = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'{self.tempo}'
+        return f'{self.descricao}'
 
 
