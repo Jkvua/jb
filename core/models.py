@@ -8,7 +8,7 @@ class Usuario(models.Model):
     email = models.EmailField()
 
     def __str__(self):
-        return self.nome
+        return f'{self.nome} - {self.endereco} - {self.email}'
 
 class Vaga(models.Model):
     descricao = models.CharField(max_length=40)
@@ -27,6 +27,29 @@ class Formação(models.Model):
     descricao_formacao = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'{self.nome_instituicao}'
+        return f'{self.formacao} - {self.trabalho}'
+
+class Cidade(models.Model):
+    nome_cidade = models.CharField(max_length=100)
+    estado = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f'{self.nome_cidade} - {self.estado}'
+
+class Profissional(models.Model):
+    cnpj = models.CharField(max_length=32, null=True, blank=True)
+    estado_civil = models.CharField(max_length=100)
+    data_nascimento = models.DateField(blank=True, null=True)
+    twitter = models.CharField(max_length=100, null=True)
+    linkedin = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return f'{self.cnpj} - {self.data_nascimento} - {self.estado_civil}'
+
+class Inscrição(models.Model):
+    descricao = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f'{self.tempo}'
 
 
